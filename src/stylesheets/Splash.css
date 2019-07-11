@@ -18,6 +18,7 @@
     font-weight: 600;
     padding: 16px;
     background: #39e07c;
+    border-radius: 50px;
 }
 
 #splash-button:hover {

@@ -1,6 +1,7 @@
 import React from 'react';
 // import firebaseConfig from '../../init-firebase';
 import firebase from 'firebase';
+import '../../stylesheets/todos/TodoForm.css';
 
 class TodoForm extends React.Component {
 
@@ -11,7 +12,6 @@ class TodoForm extends React.Component {
             title: "",
             category: null
         }
-        // firebase.initializeApp(firebaseConfig);
     }
 
     componentDidMount() {

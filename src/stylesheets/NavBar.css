@@ -4,7 +4,14 @@
   background: #cbf8dd;
   margin-bottom: 2rem;
   padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: middle;
 } 
+
+#logo:hover {
+  cursor: pointer;
+}
 
 #logo > h1 {
   margin: 0;
