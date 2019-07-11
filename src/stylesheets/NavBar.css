@@ -1,5 +1,13 @@
 #navbar {
-    width: 100vw;
-    height: 50px;
-    background: #cbf8dd;
-  } 
+  /* width: 100vw; */
+  height: 50px;
+  background: #cbf8dd;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+} 
+
+#logo > h1 {
+  margin: 0;
+  font-weight: 700;
+}
+

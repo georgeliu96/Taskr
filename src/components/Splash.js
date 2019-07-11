@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/Splash.css';
 
 function Splash(props) {
     return <div id="splash">

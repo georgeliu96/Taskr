@@ -1,0 +1,27 @@
+#splash-desc {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#splash-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: middle;
+    align-items: center;
+}
+
+#splash-button {
+    margin-top: 5rem;
+    width: fit-content;
+    display: block;
+    font-weight: 600;
+    padding: 16px;
+    background: #39e07c;
+}
+
+#splash-button:hover {
+    cursor: pointer;
+    transition: background-color 0.5s;
+    background: #059c42;
+}
