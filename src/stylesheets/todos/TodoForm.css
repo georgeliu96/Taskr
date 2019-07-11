@@ -2,15 +2,57 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     height: 70vh;
 }
 
 #todo-form {
-    height: 35vh;
+    margin-top: 5vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.todo-form-input {
+    width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.todo-form-input:focus {
+    outline: none;
+    border: 1px solid gray;
+}
+
+#todo-form-dropdown {
+    width: 330px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+#todo-form-dropdown:focus {
+    outline: none;
+    border: 1px solid gray;
+}
+
+#todo-form-submit {
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 2px solid #059c42;
+    background: #39e07c;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+#todo-form-submit:hover {
+    transition: background-color 0.5s;
+    transition: color 0.5s;
+    cursor: pointer;
+    background: #059c42;
+    color: white;
 }

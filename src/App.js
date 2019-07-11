@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <HashRouter>
-        <NavBar />
+        <Route path="/" component={NavBar} />
         <Switch>
           <Route path="/new-task" component={TodoForm} />
           <Route path="/" component={Splash} />
