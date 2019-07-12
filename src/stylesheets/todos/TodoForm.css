@@ -56,3 +56,7 @@
     background: #059c42;
     color: white;
 }
+
+#todo-form-submit:focus {
+    outline: none;
+}

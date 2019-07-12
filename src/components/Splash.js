@@ -10,6 +10,9 @@ function Splash(props) {
             <div id="splash-button" onClick={() => props.history.push("/new-task")}>
                 CREATE A TO DO
             </div>
+            <div id="splash-button" onClick={() => props.history.push("/tasks")}>
+                SEE CURRENT TASKS
+            </div>
         </div>
     </div>
 }

@@ -2,6 +2,7 @@ import React from 'react';
 // import firebaseConfig from '../../init-firebase';
 import firebase from 'firebase';
 import '../../stylesheets/todos/TodoForm.css';
+import firebaseConfig from '../../init-firebase.js';
 
 class TodoForm extends React.Component {
 
@@ -15,12 +16,21 @@ class TodoForm extends React.Component {
     }
 
     componentDidMount() {
-
+        try {
+            firebase.initializeApp(firebaseConfig);
+        } catch(err) {
+            // don't do anything if firebase is already init
+        }
     }
 
     handleSubmit(e) {
+        var fb = firebase.firestore();
+        const that = this;
+
         e.preventDefault();
-        console.log(this.state);
+        fb.collection('tasks').doc('demo').set(this.state).then(() => (
+            that.props.history.push('/')
+        ));
     }
 
     handleInput(field) {
