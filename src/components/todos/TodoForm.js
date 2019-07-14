@@ -28,8 +28,9 @@ class TodoForm extends React.Component {
         const that = this;
 
         e.preventDefault();
-        fb.collection('tasks').doc('demo').set(this.state).then(() => (
-            that.props.history.push('/')
+        const key = new Date().toString();
+        fb.collection('demo').doc(key).set(this.state).then(() => (
+            that.props.history.push('/tasks')
         ));
     }
 

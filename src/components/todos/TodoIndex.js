@@ -19,18 +19,20 @@ class TodoIndex extends React.Component {
         }
 
         var fb = firebase.firestore();
-        fb.collection('tasks').doc('demo').get().then(doc => 
-            this.setState({
-                collection: doc.data()
-            })    
+        const that = this;
+        fb.collection('demo').get().then(docs => 
+            docs.forEach(doc => {
+                that.setState({
+                    collection: that.state.collection.concat([doc.data()])
+                })
+            })
         )
     }
         
 
     render() {
-        // console.log(this.state);
 
-        const tasks = Object.values(this.state).map(task => (
+        const tasks = this.state["collection"].map(task => (
             <div class="task">
                 {task.title}
                 {task.category}
