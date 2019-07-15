@@ -5,10 +5,10 @@ function Splash(props) {
     return <div id="splash">
         <div id="splash-main">
             <div id="splash-desc">
-                Welcome to Taskr! Click the button to make a to do. 
+                Welcome to Taskr! Create a new task or check your current tasks. 
             </div>
             <div id="splash-button" onClick={() => props.history.push("/new-task")}>
-                CREATE A TO DO
+                CREATE A TASK
             </div>
             <div id="splash-button" onClick={() => props.history.push("/tasks")}>
                 SEE CURRENT TASKS

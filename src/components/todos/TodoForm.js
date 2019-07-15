@@ -11,7 +11,9 @@ class TodoForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             title: "",
-            category: null
+            category: null,
+            completed: false,
+            categories: []
         }
     }
 
@@ -21,15 +23,33 @@ class TodoForm extends React.Component {
         } catch(err) {
             // don't do anything if firebase is already init
         }
+
+        var fb = firebase.firestore();
+        const that = this;
+        fb.collection('demo').get().then(docs => {
+            if (!docs.size) {
+                fb.collection('demo').doc('Tasks').set({title: "This is a demo task", completed: false})
+                    .then(that.setState({
+                        categories: ['Tasks']
+                    }))
+            } else {
+                docs.forEach(doc => {
+                    that.setState({
+                        categories: that.state.categories.concat([doc.id])
+                    })
+                })
+            }
+        })
     }
 
     handleSubmit(e) {
+        e.preventDefault();
+
         var fb = firebase.firestore();
         const that = this;
 
-        e.preventDefault();
-        const key = new Date().toString();
-        fb.collection('demo').doc(key).set(this.state).then(() => (
+
+        fb.collection('demo').doc(this.state["category"]).set({title: this.state.title, completed: this.state.completed}).then(() => (
             that.props.history.push('/tasks')
         ));
     }
@@ -43,6 +63,11 @@ class TodoForm extends React.Component {
     }
 
     render() {
+        const categories = this.state.categories.length ? (
+            this.state.categories.map(cat => (
+                <option value={`${cat}`}>{cat}</option>
+            ))
+        ) : (<> </>)
         return <> 
             <div id="todo-form-container">
                 <h1 id="todo-form-header">
@@ -57,10 +82,8 @@ class TodoForm extends React.Component {
                         Category
                     </label>
                     <select id="todo-form-dropdown" onChange={this.handleInput("category")}>
-                        <option value="" selected disabled>Select a Tree</option> 
-                        <option value="test1">test1</option>
-                        <option value="test2">test2</option>
-                        <option value="test3">test3</option>
+                        <option value="" selected disabled>Select a Category</option> 
+                        {categories}
                     </select>
                     <input id="todo-form-submit" type="submit" value="Create Task"/>
                 </form>
