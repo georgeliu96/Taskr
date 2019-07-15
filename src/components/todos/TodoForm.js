@@ -26,20 +26,28 @@ class TodoForm extends React.Component {
 
         var fb = firebase.firestore();
         const that = this;
-        const key = new Date.toString();
+        
+        // const key = new Date().toString();
+
         fb.collection('demo').get().then(docs => {
-            if (!docs.size) {
-                fb.collection('demo').doc('Tasks').collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
-                    .then(that.setState({
-                        categories: ['Tasks']
-                    }))
-            } else {
-                docs.forEach(doc => {
-                    that.setState({
-                        categories: that.state.categories.concat([doc.id])
-                    })
+            
+            // This creates duplicates of demo task because docs.size still alerts 0 even after the .then ?????
+
+            // if (!docs.size) {
+            //     fb.collection('demo').doc('Tasks').collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
+            //         .then(that.setState({
+            //             categories: ['Tasks']
+            //         }))
+            // } else {
+
+            docs.forEach(doc => {
+                that.setState({
+                    categories: that.state.categories.concat([doc.id])
                 })
-            }
+            })
+            
+            // }
+
         })
     }
 
@@ -49,8 +57,9 @@ class TodoForm extends React.Component {
         var fb = firebase.firestore();
         const that = this;
 
+        const key = new Date().toString();
 
-        fb.collection('demo').doc(this.state["category"]).set({title: this.state.title, completed: this.state.completed}).then(() => (
+        fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: this.state.title, completed: this.state.completed}).then(() => (
             that.props.history.push('/tasks')
         ));
     }

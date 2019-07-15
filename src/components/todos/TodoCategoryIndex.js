@@ -20,19 +20,27 @@ class TodoCategoryIndex extends React.Component {
 
         var fb = firebase.firestore();
         const that = this;
+
+        // const key = new Date().toString();
+
         fb.collection('demo').get().then(docs => {
-            if (!docs.size) {
-                fb.collection('demo').doc('Tasks').set({title: "This is a demo task", completed: false})
-                    .then(that.setState({
-                        collection: ['Tasks']
-                    }))
-            } else {
-                docs.forEach(doc => {
-                    that.setState({
-                        collection: that.state.collection.concat([doc.id])
-                    })
+
+            // This creates duplicates of demo task because docs.size still alerts 0 even after the .then ?????
+
+            // if (!docs.size) {
+            //     fb.collection('demo').doc('Tasks').collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
+            //         .then(that.setState({
+            //             collection: ['Tasks']
+            //         }))
+            // } else {
+
+            docs.forEach(doc => {
+                that.setState({
+                    collection: that.state.collection.concat([doc.id])
                 })
-            }
+            })
+            
+            // }
         })
     }
         
@@ -40,7 +48,7 @@ class TodoCategoryIndex extends React.Component {
     render() {
 
         const tasks = this.state["collection"].map(category => (
-            <div class="category" onClick={this.props.history.push(`/tasks/${category}`)}>
+            <div class="category" onClick={() => this.props.history.push(`/tasks/${category}`)}>
                 {category}
             </div>
         ))

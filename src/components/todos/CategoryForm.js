@@ -26,7 +26,7 @@ class CategoryForm extends React.Component {
         var fb = firebase.firestore();
         const that = this;
 
-        const key = new Date.toString();
+        const key = new Date().toString();
 
         fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
             .then(that.props.history.push('/tasks'))

@@ -6,8 +6,9 @@ class TaskIndex extends React.Component {
 
     constructor(props) {
         super(props);
+        this.category = this.props.match.params.category;
         this.state = {
-            category: this.props.match.params.category
+            tasks: []
         }
     }
 
@@ -20,8 +21,30 @@ class TaskIndex extends React.Component {
 
         var fb = firebase.firestore();
         const that = this; 
-        const dref = fb.collection('demo').doc(this.state.category).get()
-        dref.data()
+        fb.collection('demo').doc(this.category).collection('tasks').get().then(docs => 
+            docs.forEach(doc => (                
+                that.setState({
+                    tasks: that.state.tasks.concat([doc.data()])
+                })    
+            ))
+        )
+    }
+
+    render() {
+        const tasks = this.state["tasks"].map(task => (
+            <div class="task">
+                {task.title}
+                {task.completed}
+            </div>
+        ))
+        return <div id="task-index-container">
+            <h1 id="task-index-category">
+                {this.category}
+            </h1>
+            <div id="tasks-list">
+                {tasks}
+            </div>
+        </div>
     }
 
 }
