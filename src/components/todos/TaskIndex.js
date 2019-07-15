@@ -6,6 +6,22 @@ class TaskIndex extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            category: this.props.match.params.category
+        }
+    }
+
+    componentDidMount() {
+        try {
+            firebase.initializeApp(firebaseConfig);
+        } catch(err) {
+            // don't do anything if firebase is already init
+        }
+
+        var fb = firebase.firestore();
+        const that = this; 
+        const dref = fb.collection('demo').doc(this.state.category).get()
+        dref.data()
     }
 
 }

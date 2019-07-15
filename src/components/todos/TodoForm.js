@@ -26,9 +26,10 @@ class TodoForm extends React.Component {
 
         var fb = firebase.firestore();
         const that = this;
+        const key = new Date.toString();
         fb.collection('demo').get().then(docs => {
             if (!docs.size) {
-                fb.collection('demo').doc('Tasks').set({title: "This is a demo task", completed: false})
+                fb.collection('demo').doc('Tasks').collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
                     .then(that.setState({
                         categories: ['Tasks']
                     }))
