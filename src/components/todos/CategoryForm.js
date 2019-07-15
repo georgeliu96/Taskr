@@ -28,6 +28,8 @@ class CategoryForm extends React.Component {
 
         const key = new Date().toString();
 
+        fb.collection('demo').doc(this.state["category"]).set({created: key})
+
         fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
             .then(that.props.history.push('/tasks'))
     }

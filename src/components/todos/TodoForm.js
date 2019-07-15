@@ -30,7 +30,7 @@ class TodoForm extends React.Component {
         // const key = new Date().toString();
 
         fb.collection('demo').get().then(docs => {
-            
+
             // This creates duplicates of demo task because docs.size still alerts 0 even after the .then ?????
 
             // if (!docs.size) {
@@ -58,6 +58,8 @@ class TodoForm extends React.Component {
         const that = this;
 
         const key = new Date().toString();
+
+        fb.collection('demo').doc(this.state["category"]).set({lastEditted: key});
 
         fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: this.state.title, completed: this.state.completed}).then(() => (
             that.props.history.push('/tasks')
