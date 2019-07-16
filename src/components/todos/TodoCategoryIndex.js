@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import firebaseConfig from '../../init-firebase';
+import '../../stylesheets/todos/TodoCategoryIndex.css';
 
 class TodoCategoryIndex extends React.Component {
     constructor(props) {
@@ -49,14 +50,20 @@ class TodoCategoryIndex extends React.Component {
 
         const tasks = this.state["collection"].map(category => (
             <div class="category" onClick={() => this.props.history.push(`/tasks/${category}`)}>
-                {category}
+                <h1 class="category-name">
+                    {category}
+                </h1>
+                <div class="remaining-tasks">
+
+                </div>
             </div>
         ))
         return <div id="index-container">
             {tasks}
-
-            <div id="create-category" onClick={() => this.props.history.push('/new-category')}>
-                CREATE A CATEGORY
+            <div id="create-category-border">    
+                <div id="create-category" onClick={() => this.props.history.push('/new-category')}>
+                    CREATE A CATEGORY
+                </div>
             </div>
         </div>
 

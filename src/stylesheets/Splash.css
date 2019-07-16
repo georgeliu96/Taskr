@@ -17,12 +17,18 @@
     display: block;
     font-weight: 600;
     padding: 16px;
-    background: #39e07c;
+    background: #21ce99;
     border-radius: 50px;
 }
 
 #splash-button:hover {
     cursor: pointer;
     transition: background-color 0.5s;
-    background: #059c42;
+    background: #218f6a;
+}
+
+#buttons-container {
+    display: flex;
+    width: 30vw;
+    justify-content: space-around;
 }
