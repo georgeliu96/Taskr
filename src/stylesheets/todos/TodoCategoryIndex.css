@@ -58,5 +58,5 @@
 }
 
 #index-container:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(124, 122, 124, 0.52); 
+    background-color: lightgray; 
 }

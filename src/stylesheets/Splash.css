@@ -23,8 +23,10 @@
 
 #splash-button:hover {
     cursor: pointer;
-    transition: background-color 0.5s;
     background: #218f6a;
+    transition: background-color 0.5s;
+    color: white;
+    transition: color 0.5s;
 }
 
 #buttons-container {
