@@ -16,7 +16,7 @@ function App() {
           <Route path="/new-task" component={TodoForm} />
           <Route path="/new-category" component={CategoryForm} />
           <Route path="/tasks/:category" component={TaskIndex} />
-          <Route path="/tasks" component={TodoCategoryIndex} />
+          <Route path="/categories" component={TodoCategoryIndex} />
           <Route path="/" component={Splash} />
         </Switch>
     </HashRouter>

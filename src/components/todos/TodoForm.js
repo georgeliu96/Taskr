@@ -62,7 +62,7 @@ class TodoForm extends React.Component {
         fb.collection('demo').doc(this.state["category"]).set({lastEditted: key});
 
         fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: this.state.title, completed: this.state.completed}).then(() => (
-            that.props.history.push('/tasks')
+            that.props.history.push(`/tasks/${that.state.category}`)
         ));
     }
 
