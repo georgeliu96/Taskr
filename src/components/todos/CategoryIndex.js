@@ -85,6 +85,8 @@ class CategoryIndex extends React.Component {
                 <h1 class="category-name">
                     {this.state.collection[i]}
                 </h1>
+                <div></div>
+                <div></div>
                 <div class="remaining-tasks">
                     <div class="incomplete">
                         # of Incomplete Tasks: {this.state.taskCounts[i][0]}

@@ -1,0 +1,14 @@
+.task {
+    width: 50vw;
+    padding: 0.3rem;
+    border: 1px solid lightgray;
+    background: rgb(240, 240, 240);
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#task-index-container {
+    
+}

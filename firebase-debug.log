@@ -1,0 +1,39 @@
+[debug] [2019-07-19T23:21:55.735Z] ----------------------------------------------------------------------
+[debug] [2019-07-19T23:21:55.740Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\George\Desktop\taskr\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-07-19T23:21:55.741Z] CLI Version:   7.0.2
+[debug] [2019-07-19T23:21:55.741Z] Platform:      win32
+[debug] [2019-07-19T23:21:55.741Z] Node Version:  v11.12.0
+[debug] [2019-07-19T23:21:55.743Z] Time:          Fri Jul 19 2019 19:21:55 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-07-19T23:21:55.743Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-19T23:21:55.765Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-19T23:21:55.767Z] > authorizing via signed-in user
+[debug] [2019-07-19T23:21:55.767Z] [iam] checking project taskr-proj for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-07-19T23:21:55.771Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-19T23:21:55.771Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-19T23:21:55.940Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-19T23:21:55.948Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/taskr-proj:testIamPermissions  
+
+[debug] [2019-07-19T23:21:56.054Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-19T23:21:56.057Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/taskr-proj  
+ 
+[debug] [2019-07-19T23:21:56.317Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'taskr-proj'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-07-19T23:21:56.329Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/taskr-proj:test  
+
+[debug] [2019-07-19T23:21:56.507Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-07-19T23:21:56.510Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/taskr-proj/versions  
+
+[debug] [2019-07-19T23:21:57.670Z] <<< HTTP RESPONSE 200
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2019-07-19T23:21:57.679Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/taskr-proj/rulesets  
+
+[debug] [2019-07-19T23:21:57.679Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/taskr-proj/databases/(default)/collectionGroups/-/indexes  
+ 

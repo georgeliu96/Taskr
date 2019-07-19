@@ -2,6 +2,7 @@ import React from 'react';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import firebaseConfig from '../../init-firebase.js';
+import '../../stylesheets/todos/TaskIndex.css';
 
 class TaskIndex extends React.Component {
 
