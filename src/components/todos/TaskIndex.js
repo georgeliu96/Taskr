@@ -1,5 +1,6 @@
 import React from 'react';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import firebaseConfig from '../../init-firebase.js';
 
 class TaskIndex extends React.Component {
@@ -34,7 +35,6 @@ class TaskIndex extends React.Component {
         const tasks = this.state["tasks"].map(task => (
             <div class="task">
                 {task.title}
-                {task.completed}
             </div>
         ))
         return <div id="task-index-container">

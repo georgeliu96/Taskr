@@ -1,5 +1,6 @@
 import React from 'react';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import firebaseConfig from '../../init-firebase';
 import '../../stylesheets/todos/TodoForm.css';
 
@@ -28,10 +29,9 @@ class CategoryForm extends React.Component {
 
         const key = new Date().toString();
 
-        fb.collection('demo').doc(this.state["category"]).set({created: key})
-
-        fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
-            .then(that.props.history.push('/tasks'))
+        fb.collection('demo').doc(this.state["category"]).set({created: key}).then(() => {
+            that.props.history.push('/categories')
+        })
     }
 
     handleInput() {

@@ -1,6 +1,6 @@
 import React from 'react';
-// import firebaseConfig from '../../init-firebase';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import '../../stylesheets/todos/TodoForm.css';
 import firebaseConfig from '../../init-firebase.js';
 
@@ -31,7 +31,7 @@ class TodoForm extends React.Component {
 
         fb.collection('demo').get().then(docs => {
 
-            // This creates duplicates of demo task because docs.size still alerts 0 even after the .then ?????
+            // This creates duplicates of demo task because docs.size still is 0 even after the .then, regardless of number of docs ?????
 
             // if (!docs.size) {
             //     fb.collection('demo').doc('Tasks').collection('tasks').doc(key).set({title: "This is a demo task", completed: false})
@@ -90,6 +90,13 @@ class TodoForm extends React.Component {
                         Task
                     </label>
                     <input class="todo-form-input" type="text" onChange={this.handleInput("title")} placeholder="What's your task?"/>
+                    <label class="todo-form-label">
+                        Completed?
+                    </label>
+                    <select id="todo-form-dropdown" onChange={this.handleInput("completed")}>
+                        <option value="false" selected>No</option>
+                        <option value="true">Yes</option>
+                    </select>
                     <label class="todo-form-label">
                         Category
                     </label>
