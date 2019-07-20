@@ -26,7 +26,9 @@ class TaskIndex extends React.Component {
         fb.collection('demo').doc(this.category).collection('tasks').get().then(docs => 
             docs.forEach(doc => (                
                 that.setState({
-                    tasks: that.state.tasks.concat([doc.data()])
+                    tasks: that.state.tasks.concat([
+                        { ...doc.data(), date: doc.id }
+                    ])
                 })    
             ))
         )
@@ -35,7 +37,15 @@ class TaskIndex extends React.Component {
     render() {
         const tasks = this.state["tasks"].map(task => (
             <div class="task">
-                {task.title}
+                <div class="task-div">
+                    <b>Title:</b> {task.title}
+                </div>
+                <div class="task-div">
+                    <b>Created:</b> {task.date}
+                </div >
+                <div class="task-completion" style={task.completed ? ({background: 'lightgray'}) : ({background: '#21ce99'})}>
+
+                </div>
             </div>
         ))
         return <div id="task-index-container">
