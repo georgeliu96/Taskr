@@ -13,7 +13,8 @@ class TodoForm extends React.Component {
             title: "",
             category: null,
             completed: false,
-            categories: []
+            categories: [],
+            urgency: null
         }
     }
 
@@ -61,7 +62,7 @@ class TodoForm extends React.Component {
 
         fb.collection('demo').doc(this.state["category"]).set({lastEditted: key});
 
-        fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: this.state.title, completed: this.state.completed}).then(() => (
+        fb.collection('demo').doc(this.state["category"]).collection('tasks').doc(key).set({title: this.state.title, completed: this.state.completed, urgency: this.state.urgency}).then(() => (
             that.props.history.push(`/tasks/${that.state.category}`)
         ));
     }
@@ -90,6 +91,14 @@ class TodoForm extends React.Component {
                         Task
                     </label>
                     <input class="todo-form-input" type="text" onChange={this.handleInput("title")} placeholder="What's your task?"/>
+                    <label class="todo-form-label">
+                        Urgency
+                    </label>
+                    <select id="todo-form-dropdown" onChange={this.handleInput("urgency")}>
+                        <option value="high" selected>High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
                     <label class="todo-form-label">
                         Completed?
                     </label>

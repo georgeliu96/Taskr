@@ -20,8 +20,11 @@
     width: 25%;
 }
 
-.task-completion {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
+.task-date {
+    width: 60%;
+}
+
+.task-urgency {
+    width: 10%;
+    text-transform: capitalize;
 }

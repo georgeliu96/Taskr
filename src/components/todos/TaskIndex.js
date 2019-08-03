@@ -36,15 +36,15 @@ class TaskIndex extends React.Component {
 
     render() {
         const tasks = this.state["tasks"].map(task => (
-            <div class="task">
+            <div class="task" style={task.completed ? ({background: '#21ce99'}) : ({background: 'lightgray'})}>
                 <div class="task-div">
                     <b>Title:</b> {task.title}
                 </div>
-                <div class="task-div">
+                <div class="task-date">
                     <b>Created:</b> {task.date}
                 </div >
-                <div class="task-completion" style={task.completed ? ({background: 'lightgray'}) : ({background: '#21ce99'})}>
-
+                <div class="task-urgency" style={task.urgency === "high" ? ({color: "red"}) : (task.urgency === "medium ") ? ({color: "yellow"}) : ({color: "green"})}>
+                    Urgency: {task.urgency}
                 </div>
             </div>
         ))
