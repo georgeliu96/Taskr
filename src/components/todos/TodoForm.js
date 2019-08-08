@@ -14,7 +14,7 @@ class TodoForm extends React.Component {
             category: null,
             completed: false,
             categories: [],
-            urgency: null
+            urgency: "high"
         }
     }
 

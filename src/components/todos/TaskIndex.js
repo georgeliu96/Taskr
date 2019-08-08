@@ -35,19 +35,32 @@ class TaskIndex extends React.Component {
     }
 
     render() {
-        const tasks = this.state["tasks"].map(task => (
-            <div class="task" style={task.completed ? ({background: '#21ce99'}) : ({background: 'lightgray'})}>
+        const tasks = this.state["tasks"].map(task => {
+            let color;
+            switch (task.urgency) {
+                case "high":
+                    color = "red";
+                    break;
+                case "medium":
+                    color = "yellow";
+                    break;
+                case "low":
+                    color = "green";
+                    break;
+            }
+
+            return (<div class="task" style={task.completed ? ({background: '#21ce99'}) : ({background: 'lightgray'})}>
                 <div class="task-div">
                     <b>Title:</b> {task.title}
                 </div>
                 <div class="task-date">
                     <b>Created:</b> {task.date}
                 </div >
-                <div class="task-urgency" style={task.urgency === "high" ? ({color: "red"}) : (task.urgency === "medium ") ? ({color: "yellow"}) : ({color: "green"})}>
+                <div class="task-urgency" style={{color}}>
                     Urgency: {task.urgency}
                 </div>
-            </div>
-        ))
+            </div>)
+        })
         return <div id="task-index-container">
             <h1 id="task-index-category">
                 {this.category}
